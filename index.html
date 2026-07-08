@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>iFootprint — Calculate Your Carbon Footprint</title>
+  <meta name="description" content="Estimate your annual carbon footprint from home energy, waste, driving, flying, and eating habits." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="space" aria-hidden="true">
+    <div class="stars stars-one"></div>
+    <div class="stars stars-two"></div>
+    <div class="earth"></div>
+    <div class="glow"></div>
+  </div>
+
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="iFootprint home">
+      <span class="brand-mark">i</span><span>Footprint</span>
+    </a>
+    <nav aria-label="Primary navigation">
+      <a href="index.html">Calculator</a>
+      <a href="methodology.html">Methodology</a>
+      <a href="about.html">About</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="hero">
+      <p class="eyebrow">A simple environmental impact calculator</p>
+      <h1>See your annual carbon footprint in a few minutes.</h1>
+      <p class="lede">Enter a few household, travel, and food estimates. iFootprint keeps the calculation simple so the result is easy to understand.</p>
+      <a class="hero-button" href="#calculator">Start calculating</a>
+    </section>
+
+    <section id="calculator" class="panel calculator-panel" aria-labelledby="calculator-title">
+      <div class="panel-heading">
+        <p class="eyebrow">Calculator</p>
+        <h2 id="calculator-title">Your footprint estimate</h2>
+        <p>All fields are optional, but more complete inputs produce a better estimate.</p>
+      </div>
+
+      <form id="footprint-form">
+        <div class="form-section">
+          <div>
+            <h3>Home energy</h3>
+            <p>Estimate emissions from electricity, natural gas, and fuel oil.</p>
+          </div>
+          <div class="field-grid">
+            <label>People in household <input id="number_of_people" type="number" min="1" step="1" value="1"></label>
+            <label>Monthly electric bill ($) <input id="electric_bill" type="number" min="0" step="1" value="0"></label>
+            <label>Electric price ($/kWh) <input id="electric_price" type="number" min="0.01" step="0.01" value="0.15"></label>
+            <label>Monthly gas bill ($) <input id="gas_bill" type="number" min="0" step="1" value="0"></label>
+            <label>Gas price ($/therm) <input id="gas_price" type="number" min="0.01" step="0.01" value="1.20"></label>
+            <label>Monthly fuel oil bill ($) <input id="fuel_oil_bill" type="number" min="0" step="1" value="0"></label>
+            <label>Fuel oil price ($/gal) <input id="fuel_oil_price" type="number" min="0.01" step="0.01" value="4.00"></label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div>
+            <h3>Waste and recycling</h3>
+            <p>Choose the option closest to your weekly household waste and recycling habits.</p>
+          </div>
+          <div class="choice-grid">
+            <fieldset>
+              <legend>Weekly garbage</legend>
+              <label><input type="radio" name="waste" value="0"> None</label>
+              <label><input type="radio" name="waste" value="253"> ¼ bag</label>
+              <label><input type="radio" name="waste" value="505"> ½ bag</label>
+              <label><input type="radio" name="waste" value="1010" checked> 1 bag</label>
+              <label><input type="radio" name="waste" value="2020"> 2 bags</label>
+              <label><input type="radio" name="waste" value="2525"> 2½+ bags</label>
+            </fieldset>
+            <fieldset>
+              <legend>Recycling level</legend>
+              <label><input type="radio" name="recycle" value="1" checked> Almost everything</label>
+              <label><input type="radio" name="recycle" value="2"> Most things</label>
+              <label><input type="radio" name="recycle" value="3"> Some things</label>
+              <label><input type="radio" name="recycle" value="4"> Rarely</label>
+              <label><input type="radio" name="recycle" value="5"> Never</label>
+            </fieldset>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div>
+            <h3>Travel</h3>
+            <p>Add annual driving and flying estimates.</p>
+          </div>
+          <div class="field-grid">
+            <label>Miles driven per year <input id="miles_driven" type="number" min="0" step="100" value="0"></label>
+            <label>Vehicle fuel economy (MPG) <input id="fuel_economy" type="number" min="0" step="1" value="25"></label>
+            <label>Miles flown per year <input id="miles_flown" type="number" min="0" step="100" value="0"></label>
+          </div>
+        </div>
+
+        <div class="form-section">
+          <div>
+            <h3>Eating habits</h3>
+            <p>Choose the closest estimate for meat consumption.</p>
+          </div>
+          <fieldset class="inline-options">
+            <legend>Meat consumption</legend>
+            <label><input type="radio" name="meat" value="0"> None</label>
+            <label><input type="radio" name="meat" value="819"> Low</label>
+            <label><input type="radio" name="meat" value="1637"> Moderate</label>
+            <label><input type="radio" name="meat" value="3274" checked> Average</label>
+            <label><input type="radio" name="meat" value="6548"> High</label>
+            <label><input type="radio" name="meat" value="8185"> Very high</label>
+          </fieldset>
+        </div>
+
+        <div class="actions">
+          <button type="submit">Calculate footprint</button>
+          <button type="button" class="secondary" id="reset-button">Reset</button>
+        </div>
+      </form>
+    </section>
+
+    <section id="results" class="panel results-panel hidden" aria-live="polite">
+      <div class="result-main">
+        <p class="eyebrow">Annual estimate</p>
+        <div class="result-number"><span id="total-pounds">0</span> <small>lb CO₂/year</small></div>
+        <div class="result-sub"><span id="total-tons">0</span> tons CO₂/year</div>
+        <div class="grade-badge" id="overall-grade">—</div>
+        <p id="grade-message" class="grade-message"></p>
+      </div>
+      <div class="result-details">
+        <h3>Breakdown</h3>
+        <div class="breakdown" id="breakdown"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <span>iFootprint</span>
+    <span>An Ibacus project</span>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
