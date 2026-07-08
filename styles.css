@@ -53,28 +53,29 @@ a { color: inherit; }
 }
 .earth {
   position: absolute;
-  width: min(72vw, 760px);
-  aspect-ratio: 1;
-  right: max(-18vw, -170px);
-  bottom: max(-30vw, -330px);
-  border-radius: 50%;
-  background:
-    radial-gradient(circle at 35% 28%, rgba(255,255,255,.45), transparent 0 3%, transparent 15%),
-    radial-gradient(circle at 44% 38%, rgba(104, 222, 168, .8), transparent 0 14%, transparent 18%),
-    radial-gradient(circle at 61% 57%, rgba(69, 183, 126, .72), transparent 0 12%, transparent 17%),
-    radial-gradient(circle at 35% 66%, rgba(48, 151, 112, .7), transparent 0 15%, transparent 20%),
-    radial-gradient(circle at 50% 50%, #2774bd 0%, #0c3f78 48%, #05244c 68%, #010918 100%);
-  box-shadow: inset -55px -70px 95px rgba(0,0,0,.72), inset 30px 25px 65px rgba(176,229,255,.18), 0 0 110px rgba(84, 162, 255, .34);
-  filter: saturate(1.1);
+  width: min(78vw, 1050px);
+  height: auto;
+  right: max(-13vw, -170px);
+  bottom: max(-19vw, -250px);
+  z-index: -1;
+  filter: saturate(1.08) contrast(1.03) drop-shadow(0 0 90px rgba(84, 162, 255, .25));
+  transform-origin: 62% 58%;
+  pointer-events: none;
+  user-select: none;
 }
 .glow {
   position: absolute;
-  right: -5vw;
-  bottom: -18vw;
+  right: -3vw;
+  bottom: -12vw;
   width: 65vw;
   height: 50vw;
-  background: radial-gradient(circle, rgba(82, 182, 255, 0.21), transparent 62%);
+  background: radial-gradient(circle, rgba(82, 182, 255, 0.16), transparent 62%);
   filter: blur(10px);
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
 }
 .site-header {
   width: min(1160px, calc(100% - 32px));
@@ -211,5 +212,5 @@ footer { width: min(1160px, calc(100% - 32px)); margin: 0 auto; padding: 28px 0 
   .hero { min-height: auto; padding: 36px 0 56px; }
   .form-section, .results-panel { grid-template-columns: 1fr; }
   .field-grid, .choice-grid, .method-grid { grid-template-columns: 1fr; }
-  .earth { width: 95vw; right: -42vw; bottom: -34vw; opacity: .8; }
+  .earth { width: 130vw; right: -58vw; bottom: -18vw; opacity: .72; }
 }
